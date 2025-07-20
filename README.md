@@ -41,15 +41,13 @@ The generated JSON file follows this format:
     "title": "Space Jam",
     "poster_url": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5bfvRjqt4McjQp5keZq3onlk4RI.jpg",
     "imdb_id": "tt0117705",
-    "episode_number": 1,
-    "episode_air_date": "2023-01-09"
+    "episode_number": 1
   },
   {
     "title": "The Addams Family",
     "poster_url": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/9Dqgh9FzclRx7OmuSCnW6Ku6cXe.jpg",
     "imdb_id": "tt0101272",
-    "episode_number": 3,
-    "episode_air_date": "2023-01-23"
+    "episode_number": 3
   }
 ]
 ```
