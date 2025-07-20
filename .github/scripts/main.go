@@ -26,6 +26,12 @@ type Movie struct {
 	EpisodeAirDate string `json:"episode_air_date"`
 }
 
+// MovieEntry represents a movie entry from the wiki with its air date
+type MovieEntry struct {
+	Title    string
+	AirDate  string
+}
+
 // TMDBResponse represents the response from TMDB API
 type TMDBResponse struct {
 	Results []TMDBMovie `json:"results"`
@@ -82,19 +88,25 @@ func (s *Scraper) scrapeWikiPage() (string, error) {
 	return doc.Html()
 }
 
-// extractMovieTitles extracts movie titles from the HTML content
-func (s *Scraper) extractMovieTitles(htmlContent string) ([]string, error) {
+// extractMovieEntries extracts movie titles and air dates from the HTML content
+func (s *Scraper) extractMovieEntries(htmlContent string) ([]MovieEntry, error) {
 	doc, err := goquery.NewDocumentFromReader(strings.NewReader(htmlContent))
 	if err != nil {
 		return nil, fmt.Errorf("failed to parse HTML: %w", err)
 	}
 
-	var movies []string
+	var entries []MovieEntry
 	seen := make(map[string]bool)
 
-	// Find all italicized text (movie titles)
-	doc.Find("i").Each(func(i int, s *goquery.Selection) {
-		title := strings.TrimSpace(s.Text())
+	// Find all table rows that contain movie information
+	doc.Find("table tr").Each(func(i int, row *goquery.Selection) {
+		// Look for italicized text (movie titles) within table cells
+		movieCell := row.Find("td i").First()
+		if movieCell.Length() == 0 {
+			return
+		}
+
+		title := strings.TrimSpace(movieCell.Text())
 		
 		// Skip if already seen
 		if seen[title] {
@@ -135,10 +147,50 @@ func (s *Scraper) extractMovieTitles(htmlContent string) ([]string, error) {
 			return
 		}
 
-		movies = append(movies, title)
+		// Try to find the air date in the same row
+		airDate := ""
+		
+		// Look for date patterns in the row
+		rowText := row.Text()
+		
+		// Try multiple date patterns
+		datePatterns := []*regexp.Regexp{
+			regexp.MustCompile(`(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+\d{4}`),
+			regexp.MustCompile(`\d{1,2}/\d{1,2}/\d{4}`),
+			regexp.MustCompile(`\d{4}-\d{2}-\d{2}`),
+		}
+		
+		for _, pattern := range datePatterns {
+			if match := pattern.FindString(rowText); match != "" {
+				airDate = match
+				break
+			}
+		}
+		
+		// Note: If no date is found, airDate will remain empty string
+
+		entries = append(entries, MovieEntry{
+			Title:   title,
+			AirDate: airDate,
+		})
 	})
 
-	return movies, nil
+	return entries, nil
+}
+
+// extractMovieTitles extracts movie titles from the HTML content (for backward compatibility)
+func (s *Scraper) extractMovieTitles(htmlContent string) ([]string, error) {
+	entries, err := s.extractMovieEntries(htmlContent)
+	if err != nil {
+		return nil, err
+	}
+
+	var titles []string
+	for _, entry := range entries {
+		titles = append(titles, entry.Title)
+	}
+
+	return titles, nil
 }
 
 // searchMovie searches for a movie on TMDB
@@ -263,13 +315,13 @@ func (s *Scraper) generateRadarrList() ([]Movie, error) {
 		return nil, fmt.Errorf("failed to scrape wiki page: %w", err)
 	}
 
-	fmt.Println("Extracting movie titles...")
-	movieTitles, err := s.extractMovieTitles(htmlContent)
+	fmt.Println("Extracting movie titles and air dates...")
+	movieEntries, err := s.extractMovieEntries(htmlContent)
 	if err != nil {
-		return nil, fmt.Errorf("failed to extract movie titles: %w", err)
+		return nil, fmt.Errorf("failed to extract movie entries: %w", err)
 	}
 
-	fmt.Printf("Found %d unique movies\n", len(movieTitles))
+	fmt.Printf("Found %d unique movies\n", len(movieEntries))
 
 	var radarrList []Movie
 	var mu sync.Mutex
@@ -281,33 +333,37 @@ func (s *Scraper) generateRadarrList() ([]Movie, error) {
 	successful := 0
 	failed := 0
 
-	for i, title := range movieTitles {
+	for i, entry := range movieEntries {
 		wg.Add(1)
-		go func(index int, movieTitle string) {
+		go func(index int, movieEntry MovieEntry) {
 			defer wg.Done()
 			
 			// Acquire semaphore
 			semaphore <- struct{}{}
 			defer func() { <-semaphore }()
 
-			fmt.Printf("Processing %d/%d: %s\n", index+1, len(movieTitles), movieTitle)
+			fmt.Printf("Processing %d/%d: %s\n", index+1, len(movieEntries), movieEntry.Title)
 
-			movie, err := s.searchMovie(movieTitle)
+			movie, err := s.searchMovie(movieEntry.Title)
 			if err != nil {
 				mu.Lock()
 				failed++
 				mu.Unlock()
-				fmt.Printf("  ✗ Not found: %s (%v)\n", movieTitle, err)
+				fmt.Printf("  ✗ Not found: %s (%v)\n", movieEntry.Title, err)
 				return
 			}
 
 			// Only require IMDB ID (essential for Radarr), poster URL is optional
 			if movie.IMDBID != "" {
-				// Add episode information (we'll need to get this from the wiki parsing)
+				// Add episode information from the wiki data
 				movie.EpisodeNumber = index + 1
-				// For now, use a placeholder date - in a real implementation, 
-				// we'd extract this from the wiki table
-				movie.EpisodeAirDate = "2023-01-01" // Placeholder
+				
+				// Use the actual air date from the wiki, or a placeholder if not found
+				if movieEntry.AirDate != "" {
+					movie.EpisodeAirDate = movieEntry.AirDate
+				} else {
+					movie.EpisodeAirDate = "Unknown" // Better than hardcoded date
+				}
 				
 				mu.Lock()
 				radarrList = append(radarrList, *movie)
@@ -316,20 +372,20 @@ func (s *Scraper) generateRadarrList() ([]Movie, error) {
 				
 				// Log whether poster is available or not
 				if movie.PosterURL != "" {
-					fmt.Printf("  ✓ Found: %s (IMDB: %s, Episode: %d)\n", movie.Title, movie.IMDBID, movie.EpisodeNumber)
+					fmt.Printf("  ✓ Found: %s (IMDB: %s, Episode: %d, Air Date: %s)\n", movie.Title, movie.IMDBID, movie.EpisodeNumber, movie.EpisodeAirDate)
 				} else {
-					fmt.Printf("  ✓ Found: %s (IMDB: %s, Episode: %d) - No poster\n", movie.Title, movie.IMDBID, movie.EpisodeNumber)
+					fmt.Printf("  ✓ Found: %s (IMDB: %s, Episode: %d, Air Date: %s) - No poster\n", movie.Title, movie.IMDBID, movie.EpisodeNumber, movie.EpisodeAirDate)
 				}
 			} else {
 				mu.Lock()
 				failed++
 				mu.Unlock()
-				fmt.Printf("  ✗ Missing IMDB ID: %s\n", movieTitle)
+				fmt.Printf("  ✗ Missing IMDB ID: %s\n", movieEntry.Title)
 			}
 
 			// Rate limiting
 			time.Sleep(250 * time.Millisecond)
-		}(i, title)
+		}(i, entry)
 	}
 
 	wg.Wait()

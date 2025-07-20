@@ -134,8 +134,8 @@ func TestFilteringLogic(t *testing.T) {
 	}
 	
 	for _, tc := range testCases {
-		// Create a simple HTML with just this title
-		htmlContent := fmt.Sprintf("<html><body><i>%s</i></body></html>", tc.title)
+		// Create a simple HTML with table structure that matches the new extraction logic
+		htmlContent := fmt.Sprintf("<html><body><table><tr><td><i>%s</i></td></tr></table></body></html>", tc.title)
 		
 		movies, err := scraper.extractMovieTitles(htmlContent)
 		if err != nil {
@@ -180,4 +180,55 @@ func TestMovieSorting(t *testing.T) {
 			t.Errorf("Expected title '%s' at position %d, got '%s'", expectedTitles[i], i, movie.Title)
 		}
 	}
+} 
+
+func TestAirDateExtraction(t *testing.T) {
+	scraper := NewScraper("dummy_key")
+	
+	// Test HTML with air dates
+	htmlContent := `
+	<html>
+		<body>
+			<table>
+				<tr><td><i>Space Jam</i></td><td>January 9, 2023</td></tr>
+				<tr><td><i>The Addams Family</i></td><td>January 23, 2023</td></tr>
+				<tr><td><i>Dune</i></td><td>February 6, 2023</td></tr>
+				<tr><td><i>Ghost</i></td><td>February 20, 2023</td></tr>
+				<tr><td><i>Sister Act</i></td><td>March 6, 2023</td></tr>
+			</table>
+		</body>
+	</html>
+	`
+	
+	entries, err := scraper.extractMovieEntries(htmlContent)
+	if err != nil {
+		t.Fatalf("Failed to extract movie entries: %v", err)
+	}
+	
+	// Check that we found the expected movies with air dates
+	expectedEntries := map[string]string{
+		"Space Jam":        "January 9, 2023",
+		"The Addams Family": "January 23, 2023",
+		"Dune":             "February 6, 2023",
+		"Ghost":            "February 20, 2023",
+		"Sister Act":       "March 6, 2023",
+	}
+	
+	for _, entry := range entries {
+		expectedDate, exists := expectedEntries[entry.Title]
+		if !exists {
+			t.Errorf("Unexpected movie found: %s", entry.Title)
+			continue
+		}
+		
+		if entry.AirDate != expectedDate {
+			t.Errorf("Expected air date '%s' for '%s', got '%s'", expectedDate, entry.Title, entry.AirDate)
+		}
+	}
+	
+	if len(entries) != len(expectedEntries) {
+		t.Errorf("Expected %d entries, got %d", len(expectedEntries), len(entries))
+	}
+	
+	t.Logf("Successfully extracted %d movie entries with air dates", len(entries))
 } 
