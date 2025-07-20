@@ -1,0 +1,65 @@
+[
+  {
+    "title": "Space Jam",
+    "poster_url": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5bfvRjqt4McjQp5keZq3onlk4RI.jpg",
+    "imdb_id": "tt0117705",
+    "episode_number": 1,
+    "episode_air_date": "2023-01-09"
+  },
+  {
+    "title": "Space Jam: A New Legacy",
+    "poster_url": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/5bFK5d3mVTAvBCXi5NPWH0WYjXk.jpg",
+    "imdb_id": "tt3554046",
+    "episode_number": 2,
+    "episode_air_date": "2023-01-16"
+  },
+  {
+    "title": "The Addams Family",
+    "poster_url": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/9Dqgh9FzclRx7OmuSCnW6Ku6cXe.jpg",
+    "imdb_id": "tt0101272",
+    "episode_number": 3,
+    "episode_air_date": "2023-01-23"
+  },
+  {
+    "title": "Dune",
+    "poster_url": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
+    "imdb_id": "tt0087182",
+    "episode_number": 4,
+    "episode_air_date": "2023-01-30"
+  },
+  {
+    "title": "Ghost",
+    "poster_url": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/68W7zBVLDiJfOj4RvVdgXZJgqGt.jpg",
+    "imdb_id": "tt0099653",
+    "episode_number": 5,
+    "episode_air_date": "2023-02-06"
+  },
+  {
+    "title": "Sister Act",
+    "poster_url": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/7SJMOp0e6RqzuEWh3zcj6zK2xyA.jpg",
+    "imdb_id": "tt0105417",
+    "episode_number": 6,
+    "episode_air_date": "2023-02-13"
+  },
+  {
+    "title": "Sister Act 2: Back in the Habit",
+    "poster_url": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/7SJMOp0e6RqzuEWh3zcj6zK2xyA.jpg",
+    "imdb_id": "tt0108147",
+    "episode_number": 7,
+    "episode_air_date": "2023-02-20"
+  },
+  {
+    "title": "The Addams Family Values",
+    "poster_url": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/9Dqgh9FzclRx7OmuSCnW6Ku6cXe.jpg",
+    "imdb_id": "tt0106220",
+    "episode_number": 8,
+    "episode_air_date": "2023-02-27"
+  },
+  {
+    "title": "Friday",
+    "poster_url": "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/9Dqgh9FzclRx7OmuSCnW6Ku6cXe.jpg",
+    "imdb_id": "tt0113118",
+    "episode_number": 9,
+    "episode_air_date": "2023-03-06"
+  }
+] 

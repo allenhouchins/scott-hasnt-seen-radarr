@@ -1,0 +1,65 @@
+name: Update Scott Hasn't Seen Radarr List
+
+on:
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  update-list:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.21'
+        
+    - name: Install dependencies
+      run: go mod download
+        
+    - name: Run tests
+      run: go test -v
+        
+    - name: Run scraper
+      env:
+        TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+      run: go run main.go
+      
+    - name: Check for changes
+      id: changes
+      run: |
+        if git diff --quiet scott_hasnt_seen.json; then
+          echo "changed=false" >> $GITHUB_OUTPUT
+        else
+          echo "changed=true" >> $GITHUB_OUTPUT
+        fi
+        
+    - name: Commit and push changes
+      if: steps.changes.outputs.changed == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add scott_hasnt_seen.json
+        git commit -m "Update Scott Hasn't Seen list - $(date +'%Y-%m-%d')"
+        git push
+        
+    - name: Create release if new movies found
+      if: steps.changes.outputs.changed == 'true'
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v$(date +'%Y.%m.%d')
+        name: "Scott Hasn't Seen Radarr List - $(date +'%Y-%m-%d')"
+        body: |
+          Updated Scott Hasn't Seen list with latest movies from the podcast.
+          
+          This list can be imported into Radarr to automatically add movies that Scott Aukerman has watched on his podcast.
+        files: scott_hasnt_seen.json
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
