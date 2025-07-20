@@ -79,10 +79,16 @@ If you want to contribute or run your own version:
 
 1. Fork this repository
 2. Go to your repository's **Settings** → **Secrets and variables** → **Actions**
-3. Add a new repository secret:
+3. Add the following repository secrets:
    - **Name**: `TMDB_API_KEY`
    - **Value**: Your TMDb API key (get one from [https://www.themoviedb.org/settings/api](https://www.themoviedb.org/settings/api))
+   
+   **Optional but recommended for automatic updates:**
+   - **Name**: `PAT_TOKEN`
+   - **Value**: A Personal Access Token with `repo` permissions (create one at [https://github.com/settings/tokens](https://github.com/settings/tokens))
 4. The GitHub Action will automatically run daily at 2 AM UTC
+
+**Note**: If you don't set up a PAT_TOKEN, the workflow will still work for scheduled runs and manual triggers, but may have issues with push-triggered updates due to GitHub's security restrictions.
 
 ### Manual Updates
 
@@ -90,6 +96,31 @@ You can also trigger manual updates by:
 1. Going to the **Actions** tab in your repository
 2. Selecting the "Update Scott Hasn't Seen Radarr List" workflow
 3. Clicking **Run workflow**
+
+## Troubleshooting
+
+### GitHub Action Permission Errors
+
+If you see errors like `Permission to [repo] denied to github-actions[bot]`:
+
+1. **For scheduled runs and manual triggers**: This should work automatically with the default `GITHUB_TOKEN`
+2. **For push-triggered runs**: You may need to set up a Personal Access Token:
+   - Go to [https://github.com/settings/tokens](https://github.com/settings/tokens)
+   - Create a new token with `repo` permissions
+   - Add it as a repository secret named `PAT_TOKEN`
+
+### Missing Movies
+
+If some movies are missing from the list:
+- The scraper filters out TV shows and non-movie content
+- Some movies might not be found in TMDb's database
+- Check the GitHub Action logs for specific error messages
+
+### JSON Import Issues in Radarr
+
+- Ensure the JSON file is accessible via HTTPS URL
+- Verify the JSON format is valid
+- Check that the IMDB IDs are correct
 
 ## Contributing
 

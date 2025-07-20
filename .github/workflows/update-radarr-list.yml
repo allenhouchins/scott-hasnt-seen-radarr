@@ -11,6 +11,11 @@ on:
     paths-ignore:
       - 'scott_hasnt_seen.json' # Don't trigger on JSON updates to avoid loops
 
+# Set permissions for the job
+permissions:
+  contents: write
+  actions: read
+
 jobs:
   update-list:
     runs-on: ubuntu-latest
@@ -18,6 +23,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Set up Go
       uses: actions/setup-go@v4
@@ -88,6 +95,10 @@ jobs:
         git config --local user.name "GitHub Action"
         git add scott_hasnt_seen.json
         git commit -m "Update Scott Hasn't Seen list - $(date +'%Y-%m-%d')"
+        # Use PAT if available, otherwise use GITHUB_TOKEN
+        if [ -n "${{ secrets.PAT_TOKEN }}" ]; then
+          git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}
+        fi
         git push
         
     - name: Create release if new movies found
