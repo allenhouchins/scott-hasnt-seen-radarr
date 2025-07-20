@@ -35,6 +35,12 @@ jobs:
         cd .github/scripts
         go test -v
         
+    - name: Clean up any incorrectly placed files
+      run: |
+        # Remove any JSON files that might have been created in wrong locations
+        rm -f .github/scott_hasnt_seen.json
+        rm -f .github/scott_hasnt_seen_*.json
+        
     - name: Run scraper
       env:
         TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}

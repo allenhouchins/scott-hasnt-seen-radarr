@@ -373,15 +373,23 @@ func main() {
 	}
 
 	if len(radarrList) > 0 {
+		// Debug: Show current working directory
+		if cwd, err := os.Getwd(); err == nil {
+			fmt.Printf("Current working directory: %s\n", cwd)
+		}
+		
 		// Save with timestamp
 		timestamp := time.Now().Format("20060102_150405")
-		filename := fmt.Sprintf("../scott_hasnt_seen_%s.json", timestamp)
+		filename := fmt.Sprintf("../../scott_hasnt_seen_%s.json", timestamp)
+		fmt.Printf("Saving timestamped file to: %s\n", filename)
 		if err := scraper.saveToFile(radarrList, filename); err != nil {
 			log.Printf("Failed to save timestamped file: %v", err)
 		}
 
 		// Save without timestamp for easy access (in root directory)
-		if err := scraper.saveToFile(radarrList, "../scott_hasnt_seen.json"); err != nil {
+		mainFilename := "../../scott_hasnt_seen.json"
+		fmt.Printf("Saving main file to: %s\n", mainFilename)
+		if err := scraper.saveToFile(radarrList, mainFilename); err != nil {
 			log.Printf("Failed to save main file: %v", err)
 		}
 	} else {
