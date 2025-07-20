@@ -5,6 +5,11 @@ on:
     # Run daily at 2 AM UTC
     - cron: '0 2 * * *'
   workflow_dispatch: # Allow manual triggering
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'scott_hasnt_seen.json' # Don't trigger on JSON updates to avoid loops
 
 jobs:
   update-list:
@@ -36,14 +41,38 @@ jobs:
       run: |
         cd .github/scripts
         go run main.go
+        
+    - name: Verify JSON file
+      run: |
+        echo "Checking if scott_hasnt_seen.json was created/updated:"
+        if [ -f "scott_hasnt_seen.json" ]; then
+          echo "File exists. Size: $(wc -l < scott_hasnt_seen.json) lines"
+          echo "First few lines:"
+          head -10 scott_hasnt_seen.json
+        else
+          echo "File does not exist!"
+        fi
       
     - name: Check for changes
       id: changes
       run: |
+        # Debug: Show current directory and file status
+        echo "Current directory: $(pwd)"
+        echo "Files in current directory:"
+        ls -la
+        echo ""
+        echo "Git status:"
+        git status
+        echo ""
+        
+        # Check if the JSON file was modified by the scraper
         if git diff --quiet scott_hasnt_seen.json; then
           echo "changed=false" >> $GITHUB_OUTPUT
+          echo "No changes detected in scott_hasnt_seen.json"
         else
           echo "changed=true" >> $GITHUB_OUTPUT
+          echo "Changes detected in scott_hasnt_seen.json"
+          git diff --stat scott_hasnt_seen.json
         fi
         
     - name: Commit and push changes

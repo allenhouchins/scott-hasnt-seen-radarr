@@ -375,13 +375,13 @@ func main() {
 	if len(radarrList) > 0 {
 		// Save with timestamp
 		timestamp := time.Now().Format("20060102_150405")
-		filename := fmt.Sprintf("scott_hasnt_seen_%s.json", timestamp)
+		filename := fmt.Sprintf("../scott_hasnt_seen_%s.json", timestamp)
 		if err := scraper.saveToFile(radarrList, filename); err != nil {
 			log.Printf("Failed to save timestamped file: %v", err)
 		}
 
-		// Save without timestamp for easy access
-		if err := scraper.saveToFile(radarrList, "scott_hasnt_seen.json"); err != nil {
+		// Save without timestamp for easy access (in root directory)
+		if err := scraper.saveToFile(radarrList, "../scott_hasnt_seen.json"); err != nil {
 			log.Printf("Failed to save main file: %v", err)
 		}
 	} else {
