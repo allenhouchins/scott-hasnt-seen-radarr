@@ -1,8 +1,15 @@
-# Hide all Go source code and build artifacts
-*.go
-go.mod
-go.sum
-Makefile
+# Hide build artifacts but keep source code for GitHub Actions
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+go.work.sum
+scott-hasnt-seen-radarr
+scott-hasnt-seen-radarr-*
 *.exe
 *.exe~
 *.dll
@@ -21,6 +28,12 @@ PROJECT_SUMMARY.md
 REPOSITORY_STRUCTURE.md
 RADARR_COMPATIBILITY.md
 sample_output.json
+
+# Hide any remaining Go files in root (they should be in .github/scripts)
+*.go
+go.mod
+go.sum
+Makefile
 
 # Hide Python (legacy)
 __pycache__/
