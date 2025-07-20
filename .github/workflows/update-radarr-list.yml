@@ -101,12 +101,31 @@ jobs:
         fi
         git push
         
+    - name: Generate release info
+      if: steps.changes.outputs.changed == 'true'
+      id: release
+      run: |
+        TAG_NAME="v$(date +'%Y.%m.%d')"
+        RELEASE_NAME="Scott Hasn't Seen Radarr List - $(date +'%Y-%m-%d')"
+        echo "Generated tag_name: $TAG_NAME"
+        echo "Generated release_name: $RELEASE_NAME"
+        echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
+        echo "release_name=$RELEASE_NAME" >> $GITHUB_OUTPUT
+        
     - name: Create release if new movies found
+      if: steps.changes.outputs.changed == 'true'
+      run: |
+        echo "About to create release with:"
+        echo "  tag_name: ${{ steps.release.outputs.tag_name }}"
+        echo "  name: ${{ steps.release.outputs.release_name }}"
+        echo "  file: scott_hasnt_seen.json"
+        
+    - name: Create GitHub release
       if: steps.changes.outputs.changed == 'true'
       uses: softprops/action-gh-release@v1
       with:
-        tag_name: v$(date +'%Y.%m.%d')
-        name: "Scott Hasn't Seen Radarr List - $(date +'%Y-%m-%d')"
+        tag_name: ${{ steps.release.outputs.tag_name }}
+        name: ${{ steps.release.outputs.release_name }}
         body: |
           Updated Scott Hasn't Seen list with latest movies from the podcast.
           
