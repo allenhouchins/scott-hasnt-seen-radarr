@@ -27,6 +27,7 @@ GO_IMPLEMENTATION.md
 PROJECT_SUMMARY.md
 REPOSITORY_STRUCTURE.md
 RADARR_COMPATIBILITY.md
+IMPROVEMENTS_SUMMARY.md
 sample_output.json
 
 # Hide any remaining Go files in root (they should be in .github/scripts)

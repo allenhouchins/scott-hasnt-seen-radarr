@@ -112,6 +112,7 @@ func (s *Scraper) extractMovieTitles(htmlContent string) ([]string, error) {
 			"awards", "the scott hasn't seenies", "march of the penguins",
 			"september 5", "twin peaks", "martin", "sprague hasn't seen",
 			"did", "next", "the scott hasn't seenies awards",
+			"scott hasn't seen", // Add the podcast name itself
 		}
 
 		titleLower := strings.ToLower(title)
@@ -141,6 +142,35 @@ func (s *Scraper) extractMovieTitles(htmlContent string) ([]string, error) {
 
 // searchMovie searches for a movie on TMDB
 func (s *Scraper) searchMovie(title string) (*Movie, error) {
+	// Handle special cases with "/" in titles
+	if strings.Contains(title, "/") {
+		// Try the full title first
+		movie, err := s.searchMovieExact(title)
+		if err == nil {
+			return movie, nil
+		}
+		
+		// If that fails, try splitting by "/" and search for the first part
+		parts := strings.Split(title, "/")
+		if len(parts) > 0 {
+			firstPart := strings.TrimSpace(parts[0])
+			if firstPart != "" {
+				movie, err := s.searchMovieExact(firstPart)
+				if err == nil {
+					return movie, nil
+				}
+			}
+		}
+		
+		// If splitting fails, return the original error
+		return nil, fmt.Errorf("no results found for '%s' (tried full title and first part)", title)
+	}
+	
+	return s.searchMovieExact(title)
+}
+
+// searchMovieExact searches for a movie on TMDB with exact title
+func (s *Scraper) searchMovieExact(title string) (*Movie, error) {
 	searchURL := fmt.Sprintf("%s/search/movie", s.tmdbBaseURL)
 	
 	params := url.Values{}
@@ -270,7 +300,8 @@ func (s *Scraper) generateRadarrList() ([]Movie, error) {
 				return
 			}
 
-			if movie.PosterURL != "" && movie.IMDBID != "" {
+			// Only require IMDB ID (essential for Radarr), poster URL is optional
+			if movie.IMDBID != "" {
 				// Add episode information (we'll need to get this from the wiki parsing)
 				movie.EpisodeNumber = index + 1
 				// For now, use a placeholder date - in a real implementation, 
@@ -281,12 +312,18 @@ func (s *Scraper) generateRadarrList() ([]Movie, error) {
 				radarrList = append(radarrList, *movie)
 				successful++
 				mu.Unlock()
-				fmt.Printf("  ✓ Found: %s (IMDB: %s, Episode: %d)\n", movie.Title, movie.IMDBID, movie.EpisodeNumber)
+				
+				// Log whether poster is available or not
+				if movie.PosterURL != "" {
+					fmt.Printf("  ✓ Found: %s (IMDB: %s, Episode: %d)\n", movie.Title, movie.IMDBID, movie.EpisodeNumber)
+				} else {
+					fmt.Printf("  ✓ Found: %s (IMDB: %s, Episode: %d) - No poster\n", movie.Title, movie.IMDBID, movie.EpisodeNumber)
+				}
 			} else {
 				mu.Lock()
 				failed++
 				mu.Unlock()
-				fmt.Printf("  ✗ Missing data: %s\n", movieTitle)
+				fmt.Printf("  ✗ Missing IMDB ID: %s\n", movieTitle)
 			}
 
 			// Rate limiting

@@ -123,6 +123,7 @@ func TestFilteringLogic(t *testing.T) {
 		{"Did", false},
 		{"Sprague Hasn't Seen", false},
 		{"The Scott Hasn't Seenies Awards", false},
+		{"Scott Hasn't Seen", false}, // Should now be filtered out
 		{"Twin Peaks", false},
 		{"Martin", false},
 		{"", false},
