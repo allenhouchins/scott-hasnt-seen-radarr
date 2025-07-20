@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"testing"
 )
 
@@ -145,6 +146,38 @@ func TestFilteringLogic(t *testing.T) {
 		found := len(movies) > 0
 		if found != tc.expected {
 			t.Errorf("Title '%s': expected %v, got %v", tc.title, tc.expected, found)
+		}
+	}
+}
+
+func TestMovieSorting(t *testing.T) {
+	// Create a list of movies with out-of-order episode numbers
+	movies := []Movie{
+		{Title: "Movie 3", EpisodeNumber: 3, IMDBID: "tt3"},
+		{Title: "Movie 1", EpisodeNumber: 1, IMDBID: "tt1"},
+		{Title: "Movie 2", EpisodeNumber: 2, IMDBID: "tt2"},
+		{Title: "Movie 5", EpisodeNumber: 5, IMDBID: "tt5"},
+		{Title: "Movie 4", EpisodeNumber: 4, IMDBID: "tt4"},
+	}
+	
+	// Sort the movies by episode number
+	sort.Slice(movies, func(i, j int) bool {
+		return movies[i].EpisodeNumber < movies[j].EpisodeNumber
+	})
+	
+	// Verify they're in the correct order
+	for i, movie := range movies {
+		expectedEpisode := i + 1
+		if movie.EpisodeNumber != expectedEpisode {
+			t.Errorf("Expected episode %d at position %d, got episode %d", expectedEpisode, i, movie.EpisodeNumber)
+		}
+	}
+	
+	// Verify the titles are in the expected order
+	expectedTitles := []string{"Movie 1", "Movie 2", "Movie 3", "Movie 4", "Movie 5"}
+	for i, movie := range movies {
+		if movie.Title != expectedTitles[i] {
+			t.Errorf("Expected title '%s' at position %d, got '%s'", expectedTitles[i], i, movie.Title)
 		}
 	}
 } 

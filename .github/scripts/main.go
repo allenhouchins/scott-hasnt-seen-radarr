@@ -8,6 +8,7 @@ import (
 	"net/url"
 	"os"
 	"regexp"
+	"sort"
 	"strings"
 	"sync"
 	"time"
@@ -332,6 +333,13 @@ func (s *Scraper) generateRadarrList() ([]Movie, error) {
 	}
 
 	wg.Wait()
+
+	// Sort the movies by episode number to ensure correct order
+	sort.Slice(radarrList, func(i, j int) bool {
+		return radarrList[i].EpisodeNumber < radarrList[j].EpisodeNumber
+	})
+	
+	fmt.Println("Movies sorted by episode number for consistent output order")
 
 	fmt.Printf("\nSummary:\n")
 	fmt.Printf("  Successful: %d\n", successful)
