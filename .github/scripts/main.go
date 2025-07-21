@@ -19,10 +19,11 @@ import (
 
 // Movie represents a movie with its metadata
 type Movie struct {
-	Title          string `json:"title"`
-	PosterURL      string `json:"poster_url"`
-	IMDBID         string `json:"imdb_id"`
-	EpisodeNumber  int    `json:"episode_number"`
+	Title     string   `json:"title"`
+	TMDBID    int      `json:"tmdb_id"`
+	IMDBID    string   `json:"imdb_id"`
+	PosterURL string   `json:"poster_url"`
+	Genres    []string `json:"genres"`
 }
 
 // TMDBResponse represents the response from TMDB API
@@ -36,11 +37,35 @@ type TMDBMovie struct {
 	Title       string `json:"title"`
 	PosterPath  string `json:"poster_path"`
 	ReleaseDate string `json:"release_date"`
+	GenreIDs    []int  `json:"genre_ids"`
 }
 
 // TMDBExternalIDs represents external IDs from TMDB API
 type TMDBExternalIDs struct {
 	IMDBID string `json:"imdb_id"`
+}
+
+// Genre mapping from TMDB genre IDs to names
+var genreMap = map[int]string{
+	28:    "action",
+	12:    "adventure",
+	16:    "animation",
+	35:    "comedy",
+	80:    "crime",
+	99:    "documentary",
+	18:    "drama",
+	10751: "family",
+	14:    "fantasy",
+	36:    "history",
+	27:    "horror",
+	10402: "music",
+	9648:  "mystery",
+	10749: "romance",
+	878:   "science_fiction",
+	10770: "tv_movie",
+	53:    "thriller",
+	10752: "war",
+	37:    "western",
 }
 
 // Scraper handles the scraping and API interactions
@@ -214,14 +239,30 @@ func (s *Scraper) searchMovieExact(title string) (*Movie, error) {
 
 	posterURL := ""
 	if movie.PosterPath != "" {
-		posterURL = fmt.Sprintf("https://www.themoviedb.org/t/p/w300_and_h450_bestv2%s", movie.PosterPath)
+		posterURL = fmt.Sprintf("http://image.tmdb.org/t/p/w500%s", movie.PosterPath)
 	}
+
+	// Get genres from genre IDs
+	genres := s.getGenres(movie.GenreIDs)
 
 	return &Movie{
 		Title:     movie.Title,
-		PosterURL: posterURL,
+		TMDBID:    movie.ID,
 		IMDBID:    imdbID,
+		PosterURL: posterURL,
+		Genres:    genres,
 	}, nil
+}
+
+// getGenres converts genre IDs to genre names
+func (s *Scraper) getGenres(genreIDs []int) []string {
+	var genres []string
+	for _, id := range genreIDs {
+		if genreName, exists := genreMap[id]; exists {
+			genres = append(genres, genreName)
+		}
+	}
+	return genres
 }
 
 // getIMDBID gets the IMDB ID for a TMDB movie ID
@@ -302,9 +343,6 @@ func (s *Scraper) generateRadarrList() ([]Movie, error) {
 
 			// Only require IMDB ID (essential for Radarr), poster URL is optional
 			if movie.IMDBID != "" {
-				// Add episode information
-				movie.EpisodeNumber = index + 1
-				
 				mu.Lock()
 				radarrList = append(radarrList, *movie)
 				successful++
@@ -312,9 +350,9 @@ func (s *Scraper) generateRadarrList() ([]Movie, error) {
 				
 				// Log whether poster is available or not
 				if movie.PosterURL != "" {
-					fmt.Printf("  ✓ Found: %s (IMDB: %s, Episode: %d)\n", movie.Title, movie.IMDBID, movie.EpisodeNumber)
+					fmt.Printf("  ✓ Found: %s (IMDB: %s, TMDB: %d)\n", movie.Title, movie.IMDBID, movie.TMDBID)
 				} else {
-					fmt.Printf("  ✓ Found: %s (IMDB: %s, Episode: %d) - No poster\n", movie.Title, movie.IMDBID, movie.EpisodeNumber)
+					fmt.Printf("  ✓ Found: %s (IMDB: %s, TMDB: %d) - No poster\n", movie.Title, movie.IMDBID, movie.TMDBID)
 				}
 			} else {
 				mu.Lock()
@@ -330,12 +368,12 @@ func (s *Scraper) generateRadarrList() ([]Movie, error) {
 
 	wg.Wait()
 
-	// Sort the movies by episode number to ensure correct order
+	// Sort the movies by title to ensure consistent order
 	sort.Slice(radarrList, func(i, j int) bool {
-		return radarrList[i].EpisodeNumber < radarrList[j].EpisodeNumber
+		return radarrList[i].Title < radarrList[j].Title
 	})
 	
-	fmt.Println("Movies sorted by episode number for consistent output order")
+	fmt.Println("Movies sorted by title for consistent output order")
 
 	fmt.Printf("\nSummary:\n")
 	fmt.Printf("  Successful: %d\n", successful)

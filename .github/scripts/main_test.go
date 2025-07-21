@@ -81,26 +81,31 @@ func TestScraperCreation(t *testing.T) {
 
 func TestMovieStruct(t *testing.T) {
 	movie := Movie{
-		Title:          "Test Movie",
-		PosterURL:      "https://example.com/poster.jpg",
-		IMDBID:         "tt1234567",
-		EpisodeNumber:  1,
+		Title:     "Test Movie",
+		TMDBID:    12345,
+		IMDBID:    "tt1234567",
+		PosterURL: "http://image.tmdb.org/t/p/w500/test.jpg",
+		Genres:    []string{"action", "adventure"},
 	}
 	
 	if movie.Title != "Test Movie" {
 		t.Errorf("Expected title 'Test Movie', got '%s'", movie.Title)
 	}
 	
-	if movie.PosterURL != "https://example.com/poster.jpg" {
-		t.Errorf("Expected poster URL 'https://example.com/poster.jpg', got '%s'", movie.PosterURL)
+	if movie.TMDBID != 12345 {
+		t.Errorf("Expected TMDB ID 12345, got %d", movie.TMDBID)
 	}
 	
 	if movie.IMDBID != "tt1234567" {
 		t.Errorf("Expected IMDB ID 'tt1234567', got '%s'", movie.IMDBID)
 	}
 	
-	if movie.EpisodeNumber != 1 {
-		t.Errorf("Expected episode number 1, got %d", movie.EpisodeNumber)
+	if movie.PosterURL != "http://image.tmdb.org/t/p/w500/test.jpg" {
+		t.Errorf("Expected poster URL 'http://image.tmdb.org/t/p/w500/test.jpg', got '%s'", movie.PosterURL)
+	}
+	
+	if len(movie.Genres) != 2 {
+		t.Errorf("Expected 2 genres, got %d", len(movie.Genres))
 	}
 }
 
@@ -146,34 +151,52 @@ func TestFilteringLogic(t *testing.T) {
 }
 
 func TestMovieSorting(t *testing.T) {
-	// Create a list of movies with out-of-order episode numbers
+	// Create a list of movies with out-of-order titles
 	movies := []Movie{
-		{Title: "Movie 3", EpisodeNumber: 3, IMDBID: "tt3"},
-		{Title: "Movie 1", EpisodeNumber: 1, IMDBID: "tt1"},
-		{Title: "Movie 2", EpisodeNumber: 2, IMDBID: "tt2"},
-		{Title: "Movie 5", EpisodeNumber: 5, IMDBID: "tt5"},
-		{Title: "Movie 4", EpisodeNumber: 4, IMDBID: "tt4"},
+		{Title: "Movie C", TMDBID: 3, IMDBID: "tt3"},
+		{Title: "Movie A", TMDBID: 1, IMDBID: "tt1"},
+		{Title: "Movie B", TMDBID: 2, IMDBID: "tt2"},
+		{Title: "Movie E", TMDBID: 5, IMDBID: "tt5"},
+		{Title: "Movie D", TMDBID: 4, IMDBID: "tt4"},
 	}
 	
-	// Sort the movies by episode number
+	// Sort the movies by title
 	sort.Slice(movies, func(i, j int) bool {
-		return movies[i].EpisodeNumber < movies[j].EpisodeNumber
+		return movies[i].Title < movies[j].Title
 	})
 	
-	// Verify they're in the correct order
-	for i, movie := range movies {
-		expectedEpisode := i + 1
-		if movie.EpisodeNumber != expectedEpisode {
-			t.Errorf("Expected episode %d at position %d, got episode %d", expectedEpisode, i, movie.EpisodeNumber)
-		}
-	}
-	
 	// Verify the titles are in the expected order
-	expectedTitles := []string{"Movie 1", "Movie 2", "Movie 3", "Movie 4", "Movie 5"}
+	expectedTitles := []string{"Movie A", "Movie B", "Movie C", "Movie D", "Movie E"}
 	for i, movie := range movies {
 		if movie.Title != expectedTitles[i] {
 			t.Errorf("Expected title '%s' at position %d, got '%s'", expectedTitles[i], i, movie.Title)
 		}
+	}
+}
+
+func TestGenreMapping(t *testing.T) {
+	scraper := NewScraper("dummy_key")
+	
+	// Test genre ID mapping
+	genreIDs := []int{28, 12, 35} // action, adventure, comedy
+	genres := scraper.getGenres(genreIDs)
+	
+	expectedGenres := []string{"action", "adventure", "comedy"}
+	
+	if len(genres) != len(expectedGenres) {
+		t.Errorf("Expected %d genres, got %d", len(expectedGenres), len(genres))
+	}
+	
+	for i, genre := range genres {
+		if genre != expectedGenres[i] {
+			t.Errorf("Expected genre '%s', got '%s'", expectedGenres[i], genre)
+		}
+	}
+	
+	// Test with unknown genre ID
+	unknownGenres := scraper.getGenres([]int{99999})
+	if len(unknownGenres) != 0 {
+		t.Errorf("Expected 0 genres for unknown ID, got %d", len(unknownGenres))
 	}
 } 
 

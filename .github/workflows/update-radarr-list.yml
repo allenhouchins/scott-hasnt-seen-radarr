@@ -105,8 +105,8 @@ jobs:
       if: steps.changes.outputs.changed == 'true'
       id: release
       run: |
-        TAG_NAME="v$(date +'%Y.%m.%d')"
-        RELEASE_NAME="Scott Hasn't Seen Radarr List - $(date +'%Y-%m-%d')"
+        TAG_NAME="latest"
+        RELEASE_NAME="Scott Hasn't Seen Radarr List - Latest"
         echo "Generated tag_name: $TAG_NAME"
         echo "Generated release_name: $RELEASE_NAME"
         echo "tag_name=$TAG_NAME" >> $GITHUB_OUTPUT
