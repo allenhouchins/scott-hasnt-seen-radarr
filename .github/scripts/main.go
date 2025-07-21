@@ -385,7 +385,7 @@ func (s *Scraper) generateRadarrList() ([]Movie, error) {
 
 // saveToFile saves the Radarr list to a JSON file
 func (s *Scraper) saveToFile(movies []Movie, filename string) error {
-	data, err := json.MarshalIndent(movies, "", "  ")
+	data, err := json.Marshal(movies)
 	if err != nil {
 		return fmt.Errorf("failed to marshal JSON: %w", err)
 	}
