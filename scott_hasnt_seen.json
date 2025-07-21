@@ -1,5 +1,6 @@
 [
   {
+<<<<<<< Updated upstream
     "title": "10 Things I Hate About You",
     "tmdb_id": 4951,
     "imdb_id": "tt0147800",
@@ -1379,12 +1380,27 @@
       "drama",
       "comedy"
     ]
+=======
+    "title": "Space Jam",
+    "tmdb_id": 10020,
+    "imdb_id": "tt0117705",
+    "poster_url": "http://image.tmdb.org/t/p/w500/4RN5El3Pj2W4gpwgiAGLVfSJv2g.jpg",
+    "genres": ["animation", "comedy", "family"]
+  },
+  {
+    "title": "Space Jam: A New Legacy",
+    "tmdb_id": 550988,
+    "imdb_id": "tt3554046",
+    "poster_url": "http://image.tmdb.org/t/p/w500/mDACFTANR34u6lvucazoYiFJOp7.jpg",
+    "genres": ["animation", "comedy", "family"]
+>>>>>>> Stashed changes
   },
   {
     "title": "The Addams Family",
     "tmdb_id": 2907,
     "imdb_id": "tt0101272",
     "poster_url": "http://image.tmdb.org/t/p/w500/qFf8anju5f2epI0my8RdwwIXFIP.jpg",
+<<<<<<< Updated upstream
     "genres": [
       "comedy",
       "fantasy"
@@ -1871,5 +1887,57 @@
       "thriller",
       "science_fiction"
     ]
+=======
+    "genres": ["comedy", "fantasy", "family"]
+  },
+  {
+    "title": "Dune",
+    "tmdb_id": 438631,
+    "imdb_id": "tt1160419",
+    "poster_url": "http://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
+    "genres": ["science_fiction", "adventure"]
+  },
+  {
+    "title": "Ghost",
+    "tmdb_id": 251,
+    "imdb_id": "tt0099653",
+    "poster_url": "http://image.tmdb.org/t/p/w500/w9RaPHov8oM5cnzeE27isnFMsvS.jpg",
+    "genres": ["drama", "fantasy", "romance"]
+  },
+  {
+    "title": "Sister Act",
+    "tmdb_id": 10437,
+    "imdb_id": "tt0105417",
+    "poster_url": "http://image.tmdb.org/t/p/w500/xZvVSZ0RTxIjblLV87vs7ADM12m.jpg",
+    "genres": ["comedy", "music"]
+  },
+  {
+    "title": "Sister Act 2: Back in the Habit",
+    "tmdb_id": 10438,
+    "imdb_id": "tt0108147",
+    "poster_url": "http://image.tmdb.org/t/p/w500/2jmPYqep3r2eumauyTauNIhSmR7.jpg",
+    "genres": ["comedy", "music"]
+  },
+  {
+    "title": "Terms of Endearment",
+    "tmdb_id": 11036,
+    "imdb_id": "tt0086425",
+    "poster_url": "http://image.tmdb.org/t/p/w500/l77DRjJuykqKMtD9GTK4YT7qKHW.jpg",
+    "genres": ["drama", "comedy"]
+  },
+  {
+    "title": "Addams Family Values",
+    "tmdb_id": 2908,
+    "imdb_id": "tt0106220",
+    "poster_url": "http://image.tmdb.org/t/p/w500/sdxT2VjVSx9DRicwnuECUdBHeE7.jpg",
+    "genres": ["comedy", "fantasy", "family"]
+  },
+  {
+    "title": "Friday",
+    "tmdb_id": 10437,
+    "imdb_id": "tt0113118",
+    "poster_url": "http://image.tmdb.org/t/p/w500/2lReF53F8trkC68piGSfk0JVwWU.jpg",
+    "genres": ["comedy", "crime"]
+>>>>>>> Stashed changes
   }
 ]
