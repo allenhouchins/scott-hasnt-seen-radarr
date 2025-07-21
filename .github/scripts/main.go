@@ -22,6 +22,7 @@ type Movie struct {
 	Title     string `json:"title"`
 	IMDBID    string `json:"imdb_id"`
 	PosterURL string `json:"poster_url"`
+	Year      int    `json:"year"`
 }
 
 // TMDBResponse represents the response from TMDB API
@@ -31,11 +32,36 @@ type TMDBResponse struct {
 
 // TMDBMovie represents a movie from TMDB API
 type TMDBMovie struct {
-	ID          int    `json:"id"`
-	Title       string `json:"title"`
-	PosterPath  string `json:"poster_path"`
-	ReleaseDate string `json:"release_date"`
-	GenreIDs    []int  `json:"genre_ids"`
+	ID          int       `json:"id"`
+	Title       string    `json:"title"`
+	PosterPath  string    `json:"poster_path"`
+	ReleaseDate time.Time `json:"release_date"`
+	GenreIDs    []int     `json:"genre_ids"`
+}
+
+// UnmarshalJSON custom unmarshaler for TMDBMovie to handle release date string
+func (m *TMDBMovie) UnmarshalJSON(data []byte) error {
+	type Alias TMDBMovie
+	aux := &struct {
+		ReleaseDate string `json:"release_date"`
+		*Alias
+	}{
+		Alias: (*Alias)(m),
+	}
+	
+	if err := json.Unmarshal(data, &aux); err != nil {
+		return err
+	}
+	
+	// Parse release date if it exists
+	if aux.ReleaseDate != "" {
+		parsedDate, err := time.Parse("2006-01-02", aux.ReleaseDate)
+		if err == nil {
+			m.ReleaseDate = parsedDate
+		}
+	}
+	
+	return nil
 }
 
 // TMDBExternalIDs represents external IDs from TMDB API
@@ -244,6 +270,7 @@ func (s *Scraper) searchMovieExact(title string) (*Movie, error) {
 		Title:     movie.Title,
 		IMDBID:    imdbID,
 		PosterURL: posterURL,
+		Year:      movie.ReleaseDate.Year(),
 	}, nil
 }
 
@@ -394,6 +421,45 @@ func (s *Scraper) saveToFile(movies []Movie, filename string) error {
 	return nil
 }
 
+// saveToRSS saves the Radarr list to an RSS XML file
+func (s *Scraper) saveToRSS(movies []Movie, filename string) error {
+	// Create RSS XML content
+	rssContent := `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Scott Hasn't Seen</title>
+        <description>Movies Scott hasn't seen yet</description>
+        <link>https://github.com/yourusername/radarr-scott-hasnt-seen</link>
+        <lastBuildDate>` + time.Now().Format(time.RFC1123Z) + `</lastBuildDate>
+`
+
+	// Add each movie as an RSS item
+	for _, movie := range movies {
+		title := movie.Title
+		if movie.Year > 0 {
+			title = fmt.Sprintf("%s (%d)", movie.Title, movie.Year)
+		}
+		
+		rssContent += fmt.Sprintf(`        <item>
+            <title><![CDATA[ %s ]]></title>
+            <guid isPermaLink="false">%s</guid>
+        </item>
+`, title, movie.IMDBID)
+	}
+
+	rssContent += `    </channel>
+</rss>`
+
+	// Write to file
+	err := os.WriteFile(filename, []byte(rssContent), 0644)
+	if err != nil {
+		return fmt.Errorf("failed to write RSS file: %w", err)
+	}
+
+	fmt.Printf("Saved %d movies to RSS file %s\n", len(movies), filename)
+	return nil
+}
+
 func main() {
 	// Load environment variables from .env file if it exists
 	godotenv.Load()
@@ -416,19 +482,33 @@ func main() {
 			fmt.Printf("Current working directory: %s\n", cwd)
 		}
 		
-		// Save with timestamp
+		// Save JSON with timestamp
 		timestamp := time.Now().Format("20060102_150405")
-		filename := fmt.Sprintf("../../scott_hasnt_seen_%s.json", timestamp)
-		fmt.Printf("Saving timestamped file to: %s\n", filename)
-		if err := scraper.saveToFile(radarrList, filename); err != nil {
-			log.Printf("Failed to save timestamped file: %v", err)
+		jsonFilename := fmt.Sprintf("../../scott_hasnt_seen_%s.json", timestamp)
+		fmt.Printf("Saving timestamped JSON file to: %s\n", jsonFilename)
+		if err := scraper.saveToFile(radarrList, jsonFilename); err != nil {
+			log.Printf("Failed to save timestamped JSON file: %v", err)
 		}
 
-		// Save without timestamp for easy access (in root directory)
-		mainFilename := "../../scott_hasnt_seen.json"
-		fmt.Printf("Saving main file to: %s\n", mainFilename)
-		if err := scraper.saveToFile(radarrList, mainFilename); err != nil {
-			log.Printf("Failed to save main file: %v", err)
+		// Save JSON without timestamp for easy access (in root directory)
+		mainJsonFilename := "../../scott_hasnt_seen.json"
+		fmt.Printf("Saving main JSON file to: %s\n", mainJsonFilename)
+		if err := scraper.saveToFile(radarrList, mainJsonFilename); err != nil {
+			log.Printf("Failed to save main JSON file: %v", err)
+		}
+
+		// Save RSS with timestamp
+		rssFilename := fmt.Sprintf("../../scott_hasnt_seen_%s.xml", timestamp)
+		fmt.Printf("Saving timestamped RSS file to: %s\n", rssFilename)
+		if err := scraper.saveToRSS(radarrList, rssFilename); err != nil {
+			log.Printf("Failed to save timestamped RSS file: %v", err)
+		}
+
+		// Save RSS without timestamp for easy access (in root directory)
+		mainRssFilename := "../../scott_hasnt_seen.xml"
+		fmt.Printf("Saving main RSS file to: %s\n", mainRssFilename)
+		if err := scraper.saveToRSS(radarrList, mainRssFilename); err != nil {
+			log.Printf("Failed to save main RSS file: %v", err)
 		}
 	} else {
 		fmt.Println("No movies found to save")

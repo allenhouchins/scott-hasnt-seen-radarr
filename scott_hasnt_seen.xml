@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Scott Hasn't Seen</title>
+        <description>Movies Scott hasn't seen yet</description>
+        <link>https://github.com/yourusername/radarr-scott-hasnt-seen</link>
+        <lastBuildDate>Mon, 16 Dec 2024 15:30:00 -0500</lastBuildDate>
+        <item>
+            <title><![CDATA[ Addams Family Values (1993) ]]></title>
+            <guid isPermaLink="false">tt0106220</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Dune (2021) ]]></title>
+            <guid isPermaLink="false">tt1160419</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Friday (1995) ]]></title>
+            <guid isPermaLink="false">tt0113118</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Ghost (1990) ]]></title>
+            <guid isPermaLink="false">tt0099653</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Sister Act (1992) ]]></title>
+            <guid isPermaLink="false">tt0105417</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Sister Act 2: Back in the Habit (1993) ]]></title>
+            <guid isPermaLink="false">tt0108147</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Space Jam (1996) ]]></title>
+            <guid isPermaLink="false">tt0117705</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Space Jam: A New Legacy (2021) ]]></title>
+            <guid isPermaLink="false">tt3554046</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Terms of Endearment (1983) ]]></title>
+            <guid isPermaLink="false">tt0086425</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Addams Family (1991) ]]></title>
+            <guid isPermaLink="false">tt0101272</guid>
+        </item>
+    </channel>
+</rss> 

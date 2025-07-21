@@ -84,6 +84,7 @@ func TestMovieStruct(t *testing.T) {
 		Title:     "Test Movie",
 		IMDBID:    "tt1234567",
 		PosterURL: "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/test.jpg",
+		Year:      2023,
 	}
 	
 	if movie.Title != "Test Movie" {
@@ -96,6 +97,10 @@ func TestMovieStruct(t *testing.T) {
 	
 	if movie.PosterURL != "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/test.jpg" {
 		t.Errorf("Expected poster URL 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/test.jpg', got '%s'", movie.PosterURL)
+	}
+	
+	if movie.Year != 2023 {
+		t.Errorf("Expected year 2023, got %d", movie.Year)
 	}
 }
 
@@ -143,11 +148,11 @@ func TestFilteringLogic(t *testing.T) {
 func TestMovieSorting(t *testing.T) {
 	// Create a list of movies with out-of-order titles
 	movies := []Movie{
-		{Title: "Movie C", IMDBID: "tt3"},
-		{Title: "Movie A", IMDBID: "tt1"},
-		{Title: "Movie B", IMDBID: "tt2"},
-		{Title: "Movie E", IMDBID: "tt5"},
-		{Title: "Movie D", IMDBID: "tt4"},
+		{Title: "Movie C", IMDBID: "tt3", Year: 2023},
+		{Title: "Movie A", IMDBID: "tt1", Year: 2021},
+		{Title: "Movie B", IMDBID: "tt2", Year: 2022},
+		{Title: "Movie E", IMDBID: "tt5", Year: 2025},
+		{Title: "Movie D", IMDBID: "tt4", Year: 2024},
 	}
 	
 	// Sort the movies by title

@@ -44,9 +44,11 @@ jobs:
         
     - name: Clean up any incorrectly placed files
       run: |
-        # Remove any JSON files that might have been created in wrong locations
+        # Remove any JSON/XML files that might have been created in wrong locations
         rm -f .github/scott_hasnt_seen.json
         rm -f .github/scott_hasnt_seen_*.json
+        rm -f .github/scott_hasnt_seen.xml
+        rm -f .github/scott_hasnt_seen_*.xml
         
     - name: Run scraper
       env:
@@ -55,15 +57,25 @@ jobs:
         cd .github/scripts
         go run main.go
         
-    - name: Verify JSON file
+    - name: Verify files
       run: |
         echo "Checking if scott_hasnt_seen.json was created/updated:"
         if [ -f "scott_hasnt_seen.json" ]; then
-          echo "File exists. Size: $(wc -l < scott_hasnt_seen.json) lines"
+          echo "JSON file exists. Size: $(wc -l < scott_hasnt_seen.json) lines"
           echo "First few lines:"
           head -10 scott_hasnt_seen.json
         else
-          echo "File does not exist!"
+          echo "JSON file does not exist!"
+        fi
+        
+        echo ""
+        echo "Checking if scott_hasnt_seen.xml was created/updated:"
+        if [ -f "scott_hasnt_seen.xml" ]; then
+          echo "XML file exists. Size: $(wc -l < scott_hasnt_seen.xml) lines"
+          echo "First few lines:"
+          head -10 scott_hasnt_seen.xml
+        else
+          echo "XML file does not exist!"
         fi
       
     - name: Check for changes
@@ -78,14 +90,27 @@ jobs:
         git status
         echo ""
         
-        # Check if the JSON file was modified by the scraper
-        if git diff --quiet scott_hasnt_seen.json; then
-          echo "changed=false" >> $GITHUB_OUTPUT
-          echo "No changes detected in scott_hasnt_seen.json"
-        else
-          echo "changed=true" >> $GITHUB_OUTPUT
+        # Check if either file was modified by the scraper
+        json_changed=false
+        xml_changed=false
+        
+        if ! git diff --quiet scott_hasnt_seen.json; then
+          json_changed=true
           echo "Changes detected in scott_hasnt_seen.json"
           git diff --stat scott_hasnt_seen.json
+        fi
+        
+        if ! git diff --quiet scott_hasnt_seen.xml; then
+          xml_changed=true
+          echo "Changes detected in scott_hasnt_seen.xml"
+          git diff --stat scott_hasnt_seen.xml
+        fi
+        
+        if [ "$json_changed" = true ] || [ "$xml_changed" = true ]; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+          echo "No changes detected in either file"
         fi
         
     - name: Commit and push changes
@@ -93,7 +118,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add scott_hasnt_seen.json
+        git add scott_hasnt_seen.json scott_hasnt_seen.xml
         git commit -m "Update Scott Hasn't Seen list - $(date +'%Y-%m-%d')"
         # Use PAT if available, otherwise use GITHUB_TOKEN
         if [ -n "${{ secrets.PAT_TOKEN }}" ]; then
@@ -118,7 +143,7 @@ jobs:
         echo "About to create release with:"
         echo "  tag_name: ${{ steps.release.outputs.tag_name }}"
         echo "  name: ${{ steps.release.outputs.release_name }}"
-        echo "  file: scott_hasnt_seen.json"
+        echo "  files: scott_hasnt_seen.json, scott_hasnt_seen.xml"
         
     - name: Create GitHub release
       if: steps.changes.outputs.changed == 'true'
@@ -130,7 +155,11 @@ jobs:
           Updated Scott Hasn't Seen list with latest movies from the podcast.
           
           This list can be imported into Radarr to automatically add movies that Scott Aukerman has watched on his podcast.
-        files: scott_hasnt_seen.json
+          
+          Available formats:
+          - JSON (StevenLu Custom format)
+          - RSS XML (RSS List format)
+        files: scott_hasnt_seen.json, scott_hasnt_seen.xml
         draft: false
         prerelease: false
       env:
