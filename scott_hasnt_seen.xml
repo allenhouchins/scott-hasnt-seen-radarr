@@ -4,22 +4,494 @@
         <title>Scott Hasn't Seen</title>
         <description>Movies Scott hasn't seen yet</description>
         <link>https://github.com/yourusername/radarr-scott-hasnt-seen</link>
-        <lastBuildDate>Mon, 16 Dec 2024 15:30:00 -0500</lastBuildDate>
+        <lastBuildDate>Mon, 21 Jul 2025 01:12:10 +0000</lastBuildDate>
+        <item>
+            <title><![CDATA[ 10 Things I Hate About You (1999) ]]></title>
+            <guid isPermaLink="false">tt0147800</guid>
+        </item>
+        <item>
+            <title><![CDATA[ 50 First Dates (2004) ]]></title>
+            <guid isPermaLink="false">tt0343660</guid>
+        </item>
+        <item>
+            <title><![CDATA[ A League of Their Own (1992) ]]></title>
+            <guid isPermaLink="false">tt0104694</guid>
+        </item>
         <item>
             <title><![CDATA[ Addams Family Values (1993) ]]></title>
             <guid isPermaLink="false">tt0106220</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Adventures in Babysitting (2016) ]]></title>
+            <guid isPermaLink="false">tt4456850</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Air Bud (1997) ]]></title>
+            <guid isPermaLink="false">tt0118570</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Alice Doesn't Live Here Anymore (1974) ]]></title>
+            <guid isPermaLink="false">tt0071115</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Anyone But You (2023) ]]></title>
+            <guid isPermaLink="false">tt26047818</guid>
+        </item>
+        <item>
+            <title><![CDATA[ April Fool's Day (1997) ]]></title>
+            <guid isPermaLink="false">tt1003261</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Arthur (2011) ]]></title>
+            <guid isPermaLink="false">tt1334512</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Audition (2015) ]]></title>
+            <guid isPermaLink="false">tt4280410</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Bad Lieutenant: Port of Call - New Orleans (2009) ]]></title>
+            <guid isPermaLink="false">tt1095217</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Barbarella (1968) ]]></title>
+            <guid isPermaLink="false">tt0062711</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Before Midnight (1933) ]]></title>
+            <guid isPermaLink="false">tt0024868</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Before Sunrise (1995) ]]></title>
+            <guid isPermaLink="false">tt0112471</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Before Sunset (2004) ]]></title>
+            <guid isPermaLink="false">tt0381681</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Ben-Hur (1959) ]]></title>
+            <guid isPermaLink="false">tt0052618</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Blue Streak (1999) ]]></title>
+            <guid isPermaLink="false">tt0181316</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Bob & Carol & Ted & Alice (1969) ]]></title>
+            <guid isPermaLink="false">tt0064100</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Boomerang (2015) ]]></title>
+            <guid isPermaLink="false">tt3582040</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Brainscan (1994) ]]></title>
+            <guid isPermaLink="false">tt0109327</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Brigadoon (1966) ]]></title>
+            <guid isPermaLink="false">tt0187756</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Brother Bear (2003) ]]></title>
+            <guid isPermaLink="false">tt0328880</guid>
+        </item>
+        <item>
+            <title><![CDATA[ But I'm a Cheerleader (2000) ]]></title>
+            <guid isPermaLink="false">tt0179116</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Candyman (1992) ]]></title>
+            <guid isPermaLink="false">tt0103919</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Carrie (1952) ]]></title>
+            <guid isPermaLink="false">tt0044486</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Casper (1995) ]]></title>
+            <guid isPermaLink="false">tt0112642</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Catwoman (2004) ]]></title>
+            <guid isPermaLink="false">tt0327554</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Citizen Kane (1941) ]]></title>
+            <guid isPermaLink="false">tt0033467</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Click (2006) ]]></title>
+            <guid isPermaLink="false">tt0389860</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Clockwatchers (1997) ]]></title>
+            <guid isPermaLink="false">tt0118866</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Coal Miner's Daughter (1980) ]]></title>
+            <guid isPermaLink="false">tt0080549</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Conan the Barbarian (1982) ]]></title>
+            <guid isPermaLink="false">tt0082198</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Cool Hand Luke (1967) ]]></title>
+            <guid isPermaLink="false">tt0061512</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Deliverance (1972) ]]></title>
+            <guid isPermaLink="false">tt0068473</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Despicable Me (2010) ]]></title>
+            <guid isPermaLink="false">tt1323594</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Dick Tracy (1990) ]]></title>
+            <guid isPermaLink="false">tt0099422</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Dirty Dancing (2017) ]]></title>
+            <guid isPermaLink="false">tt5262792</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Don't Be a Menace to South Central While Drinking Your Juice in the Hood (1996) ]]></title>
+            <guid isPermaLink="false">tt0116126</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Don't Tell Mom the Babysitter's Dead (1991) ]]></title>
+            <guid isPermaLink="false">tt0101757</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Driving Miss Daisy (2015) ]]></title>
+            <guid isPermaLink="false">tt4653310</guid>
         </item>
         <item>
             <title><![CDATA[ Dune (2021) ]]></title>
             <guid isPermaLink="false">tt1160419</guid>
         </item>
         <item>
+            <title><![CDATA[ Earth Girls Are Easy (1988) ]]></title>
+            <guid isPermaLink="false">tt0097257</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Empire Records (1995) ]]></title>
+            <guid isPermaLink="false">tt0112950</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Encino Man (1992) ]]></title>
+            <guid isPermaLink="false">tt0104187</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Fame (1936) ]]></title>
+            <guid isPermaLink="false">tt0027602</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Father of the Bride (1950) ]]></title>
+            <guid isPermaLink="false">tt0042451</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Fifty Shades Freed (2018) ]]></title>
+            <guid isPermaLink="false">tt4477536</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Fitzcarraldo (1982) ]]></title>
+            <guid isPermaLink="false">tt0083946</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Flashdance (1983) ]]></title>
+            <guid isPermaLink="false">tt0085549</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Footloose (1984) ]]></title>
+            <guid isPermaLink="false">tt0087277</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Four Weddings and a Funeral (1994) ]]></title>
+            <guid isPermaLink="false">tt0109831</guid>
+        </item>
+        <item>
             <title><![CDATA[ Friday (1995) ]]></title>
             <guid isPermaLink="false">tt0113118</guid>
         </item>
         <item>
+            <title><![CDATA[ Fried Green Tomatoes (1991) ]]></title>
+            <guid isPermaLink="false">tt0101921</guid>
+        </item>
+        <item>
+            <title><![CDATA[ From Russia with Love (1963) ]]></title>
+            <guid isPermaLink="false">tt0057076</guid>
+        </item>
+        <item>
             <title><![CDATA[ Ghost (1990) ]]></title>
             <guid isPermaLink="false">tt0099653</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Ghostbusters: Afterlife (2021) ]]></title>
+            <guid isPermaLink="false">tt4513678</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Gigi (1949) ]]></title>
+            <guid isPermaLink="false">tt0041414</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Godzilla (1977) ]]></title>
+            <guid isPermaLink="false">tt1543211</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Godzilla Minus One (2023) ]]></title>
+            <guid isPermaLink="false">tt23289160</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Gone in 60 Seconds (1974) ]]></title>
+            <guid isPermaLink="false">tt0071571</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Green Book (2018) ]]></title>
+            <guid isPermaLink="false">tt6966692</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Gremlins 2: The New Batch (1990) ]]></title>
+            <guid isPermaLink="false">tt0099700</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Harry and the Hendersons (1987) ]]></title>
+            <guid isPermaLink="false">tt0093148</guid>
+        </item>
+        <item>
+            <title><![CDATA[ High School Musical (2006) ]]></title>
+            <guid isPermaLink="false">tt0475293</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Highlander (1986) ]]></title>
+            <guid isPermaLink="false">tt0091203</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Hocus Pocus (1993) ]]></title>
+            <guid isPermaLink="false">tt0107120</guid>
+        </item>
+        <item>
+            <title><![CDATA[ House Party (1990) ]]></title>
+            <guid isPermaLink="false">tt0099800</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Inspector Gadget (1999) ]]></title>
+            <guid isPermaLink="false">tt0141369</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Interview with the Vampire (1994) ]]></title>
+            <guid isPermaLink="false">tt0110148</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Jack (2014) ]]></title>
+            <guid isPermaLink="false">tt3469918</guid>
+        </item>
+        <item>
+            <title><![CDATA[ James and the Giant Peach (1996) ]]></title>
+            <guid isPermaLink="false">tt0116683</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Jesse James Meets Frankenstein's Daughter (1966) ]]></title>
+            <guid isPermaLink="false">tt0060558</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Jumpin' Jack Flash (1986) ]]></title>
+            <guid isPermaLink="false">tt0091306</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Kindergarten Cop (1990) ]]></title>
+            <guid isPermaLink="false">tt0099938</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Kramer vs. Kramer (1979) ]]></title>
+            <guid isPermaLink="false">tt0079417</guid>
+        </item>
+        <item>
+            <title><![CDATA[ La La Land (2016) ]]></title>
+            <guid isPermaLink="false">tt3783958</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Lady in White (2015) ]]></title>
+            <guid isPermaLink="false">tt4549688</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Legally Blonde (2001) ]]></title>
+            <guid isPermaLink="false">tt0250494</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Mad Max 2 (1981) ]]></title>
+            <guid isPermaLink="false">tt0082694</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Mad Max Beyond Thunderdome (1985) ]]></title>
+            <guid isPermaLink="false">tt0089530</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Madame Web (2024) ]]></title>
+            <guid isPermaLink="false">tt11057302</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Magic Mike XXL (2015) ]]></title>
+            <guid isPermaLink="false">tt2268016</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Major League (1989) ]]></title>
+            <guid isPermaLink="false">tt0097815</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Major Payne (1995) ]]></title>
+            <guid isPermaLink="false">tt0110443</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Mallrats (1995) ]]></title>
+            <guid isPermaLink="false">tt0113749</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Mamma Mia! (2008) ]]></title>
+            <guid isPermaLink="false">tt0795421</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Mamma Mia! Here We Go Again (2018) ]]></title>
+            <guid isPermaLink="false">tt6911608</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Manchester by the Sea (2016) ]]></title>
+            <guid isPermaLink="false">tt4034228</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Melvin and Howard (1980) ]]></title>
+            <guid isPermaLink="false">tt0081150</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Morbius (2022) ]]></title>
+            <guid isPermaLink="false">tt5108870</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Mr. Holland's Opus (1995) ]]></title>
+            <guid isPermaLink="false">tt0113862</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Muriel's Wedding (1994) ]]></title>
+            <guid isPermaLink="false">tt0110598</guid>
+        </item>
+        <item>
+            <title><![CDATA[ My Big Fat Greek Wedding (2002) ]]></title>
+            <guid isPermaLink="false">tt0259446</guid>
+        </item>
+        <item>
+            <title><![CDATA[ My Left Foot: The Story of Christy Brown (1989) ]]></title>
+            <guid isPermaLink="false">tt0097937</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Natural Born Killers (1994) ]]></title>
+            <guid isPermaLink="false">tt0110632</guid>
+        </item>
+        <item>
+            <title><![CDATA[ New Nightmare (1994) ]]></title>
+            <guid isPermaLink="false">tt0111686</guid>
+        </item>
+        <item>
+            <title><![CDATA[ New Year's Eve (2011) ]]></title>
+            <guid isPermaLink="false">tt1598822</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Newsies (1992) ]]></title>
+            <guid isPermaLink="false">tt0104990</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Not Another Teen Movie (2001) ]]></title>
+            <guid isPermaLink="false">tt0277371</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Once Upon a Time in the West (1968) ]]></title>
+            <guid isPermaLink="false">tt0064116</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Ordinary People (2002) ]]></title>
+            <guid isPermaLink="false">tt0314470</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Paddington 2 (2017) ]]></title>
+            <guid isPermaLink="false">tt4468740</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Paper Moon (1973) ]]></title>
+            <guid isPermaLink="false">tt0070510</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Paris Is Burning (1991) ]]></title>
+            <guid isPermaLink="false">tt0100332</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Pink Flamingos (1972) ]]></title>
+            <guid isPermaLink="false">tt0069089</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Pitch Black (2023) ]]></title>
+            <guid isPermaLink="false">tt29579836</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Point Break (1991) ]]></title>
+            <guid isPermaLink="false">tt0102685</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Postcards from the Edge (1990) ]]></title>
+            <guid isPermaLink="false">tt0100395</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Practical Magic (1998) ]]></title>
+            <guid isPermaLink="false">tt0120791</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Pretty Woman (1990) ]]></title>
+            <guid isPermaLink="false">tt0100405</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Raging Bull (1980) ]]></title>
+            <guid isPermaLink="false">tt0081398</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Reds (1981) ]]></title>
+            <guid isPermaLink="false">tt0082979</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Road House (2024) ]]></title>
+            <guid isPermaLink="false">tt3359350</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Rocky IV (1985) ]]></title>
+            <guid isPermaLink="false">tt0089927</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Romy and Michele's High School Reunion (1997) ]]></title>
+            <guid isPermaLink="false">tt0120032</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Saturday Night Fever (1977) ]]></title>
+            <guid isPermaLink="false">tt0076666</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Save the Last Dance (2001) ]]></title>
+            <guid isPermaLink="false">tt0206275</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Seven Samurai (1954) ]]></title>
+            <guid isPermaLink="false">tt0047478</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Singin' in the Rain (1952) ]]></title>
+            <guid isPermaLink="false">tt0045152</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Single White Female (1992) ]]></title>
+            <guid isPermaLink="false">tt0105414</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Singles (1992) ]]></title>
+            <guid isPermaLink="false">tt0105415</guid>
         </item>
         <item>
             <title><![CDATA[ Sister Act (1992) ]]></title>
@@ -30,12 +502,32 @@
             <guid isPermaLink="false">tt0108147</guid>
         </item>
         <item>
+            <title><![CDATA[ Sophie's Choice (1982) ]]></title>
+            <guid isPermaLink="false">tt0084707</guid>
+        </item>
+        <item>
             <title><![CDATA[ Space Jam (1996) ]]></title>
             <guid isPermaLink="false">tt0117705</guid>
         </item>
         <item>
             <title><![CDATA[ Space Jam: A New Legacy (2021) ]]></title>
             <guid isPermaLink="false">tt3554046</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Suspiria (2018) ]]></title>
+            <guid isPermaLink="false">tt1034415</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Sweet November (1968) ]]></title>
+            <guid isPermaLink="false">tt0063661</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Swing Kids (2018) ]]></title>
+            <guid isPermaLink="false">tt7046974</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Taxi (1996) ]]></title>
+            <guid isPermaLink="false">tt0117866</guid>
         </item>
         <item>
             <title><![CDATA[ Terms of Endearment (1983) ]]></title>
@@ -45,5 +537,185 @@
             <title><![CDATA[ The Addams Family (1991) ]]></title>
             <guid isPermaLink="false">tt0101272</guid>
         </item>
+        <item>
+            <title><![CDATA[ The Adventures of Rocky & Bullwinkle (2000) ]]></title>
+            <guid isPermaLink="false">tt0131704</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Amityville Horror (1979) ]]></title>
+            <guid isPermaLink="false">tt0078767</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Babadook (2014) ]]></title>
+            <guid isPermaLink="false">tt2321549</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Birdcage (1996) ]]></title>
+            <guid isPermaLink="false">tt0115685</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Bodyguard (1992) ]]></title>
+            <guid isPermaLink="false">tt0103855</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Bridges of Madison County (1995) ]]></title>
+            <guid isPermaLink="false">tt0112579</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Devil Wears Prada (2006) ]]></title>
+            <guid isPermaLink="false">tt0458352</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Emperor's New Groove (2000) ]]></title>
+            <guid isPermaLink="false">tt0120917</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The English Patient (1996) ]]></title>
+            <guid isPermaLink="false">tt0116209</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The First Wives Club (1996) ]]></title>
+            <guid isPermaLink="false">tt0116313</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Five Heartbeats (1991) ]]></title>
+            <guid isPermaLink="false">tt0101891</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Garbage Pail Kids Movie (1987) ]]></title>
+            <guid isPermaLink="false">tt0093072</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Good, the Bad and the Ugly (1966) ]]></title>
+            <guid isPermaLink="false">tt0060196</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Holiday (2006) ]]></title>
+            <guid isPermaLink="false">tt0457939</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Little Vampire (2000) ]]></title>
+            <guid isPermaLink="false">tt0192255</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Mighty Ducks (1992) ]]></title>
+            <guid isPermaLink="false">tt0104868</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Muppet Movie (1979) ]]></title>
+            <guid isPermaLink="false">tt0079588</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The NeverEnding Story (1984) ]]></title>
+            <guid isPermaLink="false">tt0088323</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Notebook (2004) ]]></title>
+            <guid isPermaLink="false">tt0332280</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Omen (1995) ]]></title>
+            <guid isPermaLink="false">tt0114036</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Passion of the Christ (2004) ]]></title>
+            <guid isPermaLink="false">tt0335345</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Postman (1997) ]]></title>
+            <guid isPermaLink="false">tt0119925</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Princess Diaries (2001) ]]></title>
+            <guid isPermaLink="false">tt0247638</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Purge: Election Year (2016) ]]></title>
+            <guid isPermaLink="false">tt4094724</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Return of the Pink Panther (1975) ]]></title>
+            <guid isPermaLink="false">tt0072081</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The River Wild (1994) ]]></title>
+            <guid isPermaLink="false">tt0110997</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Rundown (2003) ]]></title>
+            <guid isPermaLink="false">tt0327850</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Sandlot (1993) ]]></title>
+            <guid isPermaLink="false">tt0108037</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Santa Clause 3: The Escape Clause (2006) ]]></title>
+            <guid isPermaLink="false">tt0452681</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Sisterhood of the Traveling Pants (2005) ]]></title>
+            <guid isPermaLink="false">tt0403508</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Super Mario Bros. Movie (2023) ]]></title>
+            <guid isPermaLink="false">tt6718170</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Top Secret: Murder in Mind (2016) ]]></title>
+            <guid isPermaLink="false">tt4287848</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Unbearable Weight of Massive Talent (2022) ]]></title>
+            <guid isPermaLink="false">tt11291274</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Warriors (1979) ]]></title>
+            <guid isPermaLink="false">tt0080120</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Wicker Man (1973) ]]></title>
+            <guid isPermaLink="false">tt0070917</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Thelma & Louise (1991) ]]></title>
+            <guid isPermaLink="false">tt0103074</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Top Gun (1986) ]]></title>
+            <guid isPermaLink="false">tt0092099</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Trainspotting (1996) ]]></title>
+            <guid isPermaLink="false">tt0117951</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Trap (2024) ]]></title>
+            <guid isPermaLink="false">tt26753003</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Troop Beverly Hills (1989) ]]></title>
+            <guid isPermaLink="false">tt0098519</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Unforgiven (1992) ]]></title>
+            <guid isPermaLink="false">tt0105695</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Waiting to Exhale (1995) ]]></title>
+            <guid isPermaLink="false">tt0114885</guid>
+        </item>
+        <item>
+            <title><![CDATA[ What Women Want (2000) ]]></title>
+            <guid isPermaLink="false">tt0207201</guid>
+        </item>
+        <item>
+            <title><![CDATA[ White Chicks (2004) ]]></title>
+            <guid isPermaLink="false">tt0381707</guid>
+        </item>
+        <item>
+            <title><![CDATA[ Zardoz (1974) ]]></title>
+            <guid isPermaLink="false">tt0070948</guid>
+        </item>
     </channel>
-</rss> 
+</rss>
