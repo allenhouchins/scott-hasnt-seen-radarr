@@ -390,6 +390,9 @@ func (s *Scraper) saveToFile(movies []Movie, filename string) error {
 		return fmt.Errorf("failed to marshal JSON: %w", err)
 	}
 
+	// Add newline at the end of the JSON data
+	data = append(data, '\n')
+
 	if err := os.WriteFile(filename, data, 0644); err != nil {
 		return fmt.Errorf("failed to write file: %w", err)
 	}
