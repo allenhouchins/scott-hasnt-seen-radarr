@@ -82,30 +82,20 @@ func TestScraperCreation(t *testing.T) {
 func TestMovieStruct(t *testing.T) {
 	movie := Movie{
 		Title:     "Test Movie",
-		TMDBID:    12345,
 		IMDBID:    "tt1234567",
-		PosterURL: "http://image.tmdb.org/t/p/w500/test.jpg",
-		Genres:    []string{"action", "adventure"},
+		PosterURL: "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/test.jpg",
 	}
 	
 	if movie.Title != "Test Movie" {
 		t.Errorf("Expected title 'Test Movie', got '%s'", movie.Title)
 	}
 	
-	if movie.TMDBID != 12345 {
-		t.Errorf("Expected TMDB ID 12345, got %d", movie.TMDBID)
-	}
-	
 	if movie.IMDBID != "tt1234567" {
 		t.Errorf("Expected IMDB ID 'tt1234567', got '%s'", movie.IMDBID)
 	}
 	
-	if movie.PosterURL != "http://image.tmdb.org/t/p/w500/test.jpg" {
-		t.Errorf("Expected poster URL 'http://image.tmdb.org/t/p/w500/test.jpg', got '%s'", movie.PosterURL)
-	}
-	
-	if len(movie.Genres) != 2 {
-		t.Errorf("Expected 2 genres, got %d", len(movie.Genres))
+	if movie.PosterURL != "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/test.jpg" {
+		t.Errorf("Expected poster URL 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/test.jpg', got '%s'", movie.PosterURL)
 	}
 }
 
@@ -153,11 +143,11 @@ func TestFilteringLogic(t *testing.T) {
 func TestMovieSorting(t *testing.T) {
 	// Create a list of movies with out-of-order titles
 	movies := []Movie{
-		{Title: "Movie C", TMDBID: 3, IMDBID: "tt3"},
-		{Title: "Movie A", TMDBID: 1, IMDBID: "tt1"},
-		{Title: "Movie B", TMDBID: 2, IMDBID: "tt2"},
-		{Title: "Movie E", TMDBID: 5, IMDBID: "tt5"},
-		{Title: "Movie D", TMDBID: 4, IMDBID: "tt4"},
+		{Title: "Movie C", IMDBID: "tt3"},
+		{Title: "Movie A", IMDBID: "tt1"},
+		{Title: "Movie B", IMDBID: "tt2"},
+		{Title: "Movie E", IMDBID: "tt5"},
+		{Title: "Movie D", IMDBID: "tt4"},
 	}
 	
 	// Sort the movies by title

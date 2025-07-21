@@ -19,11 +19,9 @@ import (
 
 // Movie represents a movie with its metadata
 type Movie struct {
-	Title     string   `json:"title"`
-	TMDBID    int      `json:"tmdb_id"`
-	IMDBID    string   `json:"imdb_id"`
-	PosterURL string   `json:"poster_url"`
-	Genres    []string `json:"genres"`
+	Title     string `json:"title"`
+	IMDBID    string `json:"imdb_id"`
+	PosterURL string `json:"poster_url"`
 }
 
 // TMDBResponse represents the response from TMDB API
@@ -239,18 +237,13 @@ func (s *Scraper) searchMovieExact(title string) (*Movie, error) {
 
 	posterURL := ""
 	if movie.PosterPath != "" {
-		posterURL = fmt.Sprintf("http://image.tmdb.org/t/p/w500%s", movie.PosterPath)
+		posterURL = fmt.Sprintf("https://www.themoviedb.org/t/p/w300_and_h450_bestv2%s", movie.PosterPath)
 	}
-
-	// Get genres from genre IDs
-	genres := s.getGenres(movie.GenreIDs)
 
 	return &Movie{
 		Title:     movie.Title,
-		TMDBID:    movie.ID,
 		IMDBID:    imdbID,
 		PosterURL: posterURL,
-		Genres:    genres,
 	}, nil
 }
 
@@ -350,9 +343,9 @@ func (s *Scraper) generateRadarrList() ([]Movie, error) {
 				
 				// Log whether poster is available or not
 				if movie.PosterURL != "" {
-					fmt.Printf("  ✓ Found: %s (IMDB: %s, TMDB: %d)\n", movie.Title, movie.IMDBID, movie.TMDBID)
+					fmt.Printf("  ✓ Found: %s (IMDB: %s)\n", movie.Title, movie.IMDBID)
 				} else {
-					fmt.Printf("  ✓ Found: %s (IMDB: %s, TMDB: %d) - No poster\n", movie.Title, movie.IMDBID, movie.TMDBID)
+					fmt.Printf("  ✓ Found: %s (IMDB: %s) - No poster\n", movie.Title, movie.IMDBID)
 				}
 			} else {
 				mu.Lock()
