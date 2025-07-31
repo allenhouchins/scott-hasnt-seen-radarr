@@ -4,7 +4,7 @@
         <title>Scott Hasn't Seen</title>
         <description>Movies Scott hasn't seen yet</description>
         <link>https://github.com/yourusername/radarr-scott-hasnt-seen</link>
-        <lastBuildDate>Wed, 30 Jul 2025 02:42:41 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 31 Jul 2025 02:42:04 +0000</lastBuildDate>
         <item>
             <title><![CDATA[ 10 Things I Hate About You (1999) ]]></title>
             <guid isPermaLink="false">tt0147800</guid>
@@ -590,6 +590,10 @@
             <guid isPermaLink="false">tt0457939</guid>
         </item>
         <item>
+            <title><![CDATA[ The Life and Passion of Jesus Christ (1903) ]]></title>
+            <guid isPermaLink="false">tt0127962</guid>
+        </item>
+        <item>
             <title><![CDATA[ The Little Vampire (2000) ]]></title>
             <guid isPermaLink="false">tt0192255</guid>
         </item>
@@ -612,10 +616,6 @@
         <item>
             <title><![CDATA[ The Omen (1995) ]]></title>
             <guid isPermaLink="false">tt0114036</guid>
-        </item>
-        <item>
-            <title><![CDATA[ The Passion of the Christ (2004) ]]></title>
-            <guid isPermaLink="false">tt0335345</guid>
         </item>
         <item>
             <title><![CDATA[ The Postman (1997) ]]></title>
