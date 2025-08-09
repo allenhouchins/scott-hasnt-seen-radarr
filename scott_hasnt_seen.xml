@@ -4,7 +4,7 @@
         <title>Scott Hasn't Seen</title>
         <description>Movies Scott hasn't seen yet</description>
         <link>https://github.com/yourusername/radarr-scott-hasnt-seen</link>
-        <lastBuildDate>Fri, 08 Aug 2025 02:42:59 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 09 Aug 2025 02:34:09 +0000</lastBuildDate>
         <item>
             <title><![CDATA[ 10 Things I Hate About You (1999) ]]></title>
             <guid isPermaLink="false">tt0147800</guid>
@@ -518,8 +518,8 @@
             <guid isPermaLink="false">tt0063661</guid>
         </item>
         <item>
-            <title><![CDATA[ Swing Kids (2018) ]]></title>
-            <guid isPermaLink="false">tt7046974</guid>
+            <title><![CDATA[ Swing Kids (1993) ]]></title>
+            <guid isPermaLink="false">tt0108265</guid>
         </item>
         <item>
             <title><![CDATA[ Taxi (1996) ]]></title>
@@ -544,6 +544,10 @@
         <item>
             <title><![CDATA[ The Babadook (2014) ]]></title>
             <guid isPermaLink="false">tt2321549</guid>
+        </item>
+        <item>
+            <title><![CDATA[ The Billionaire (2011) ]]></title>
+            <guid isPermaLink="false">tt2292955</guid>
         </item>
         <item>
             <title><![CDATA[ The Birdcage (1996) ]]></title>
@@ -656,10 +660,6 @@
         <item>
             <title><![CDATA[ The Super Mario Bros. Movie (2023) ]]></title>
             <guid isPermaLink="false">tt6718170</guid>
-        </item>
-        <item>
-            <title><![CDATA[ The Top Secret: Murder in Mind (2016) ]]></title>
-            <guid isPermaLink="false">tt4287848</guid>
         </item>
         <item>
             <title><![CDATA[ The Unbearable Weight of Massive Talent (2022) ]]></title>
