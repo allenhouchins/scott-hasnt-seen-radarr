@@ -4,7 +4,7 @@
         <title>Scott Hasn't Seen</title>
         <description>Movies Scott hasn't seen yet</description>
         <link>https://github.com/yourusername/radarr-scott-hasnt-seen</link>
-        <lastBuildDate>Sun, 10 Aug 2025 02:45:20 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 11 Aug 2025 02:43:00 +0000</lastBuildDate>
         <item>
             <title><![CDATA[ 10 Things I Hate About You (1999) ]]></title>
             <guid isPermaLink="false">tt0147800</guid>
@@ -510,6 +510,10 @@
             <guid isPermaLink="false">tt3554046</guid>
         </item>
         <item>
+            <title><![CDATA[ Spotlight on Location: The Making of The Adventures of Rocky and Bullwinkle (2001) ]]></title>
+            <guid isPermaLink="false">tt0457702</guid>
+        </item>
+        <item>
             <title><![CDATA[ Suspiria (2018) ]]></title>
             <guid isPermaLink="false">tt1034415</guid>
         </item>
@@ -518,8 +522,8 @@
             <guid isPermaLink="false">tt0063661</guid>
         </item>
         <item>
-            <title><![CDATA[ Swing Kids (1993) ]]></title>
-            <guid isPermaLink="false">tt0108265</guid>
+            <title><![CDATA[ Swing Kids (2018) ]]></title>
+            <guid isPermaLink="false">tt7046974</guid>
         </item>
         <item>
             <title><![CDATA[ Taxi (1996) ]]></title>
@@ -532,10 +536,6 @@
         <item>
             <title><![CDATA[ The Addams Family (2019) ]]></title>
             <guid isPermaLink="false">tt1620981</guid>
-        </item>
-        <item>
-            <title><![CDATA[ The Adventures of Rocky & Bullwinkle (2000) ]]></title>
-            <guid isPermaLink="false">tt0131704</guid>
         </item>
         <item>
             <title><![CDATA[ The Amityville Horror (1979) ]]></title>
