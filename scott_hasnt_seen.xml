@@ -4,7 +4,7 @@
         <title>Scott Hasn't Seen</title>
         <description>Movies Scott hasn't seen yet</description>
         <link>https://github.com/yourusername/radarr-scott-hasnt-seen</link>
-        <lastBuildDate>Thu, 21 Aug 2025 02:31:14 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 22 Aug 2025 02:31:35 +0000</lastBuildDate>
         <item>
             <title><![CDATA[ 10 Things I Hate About You (1999) ]]></title>
             <guid isPermaLink="false">tt0147800</guid>
@@ -348,10 +348,6 @@
         <item>
             <title><![CDATA[ Mallrats (1995) ]]></title>
             <guid isPermaLink="false">tt0113749</guid>
-        </item>
-        <item>
-            <title><![CDATA[ Mamma Mia! (2008) ]]></title>
-            <guid isPermaLink="false">tt0795421</guid>
         </item>
         <item>
             <title><![CDATA[ Mamma Mia! Here We Go Again (2018) ]]></title>
